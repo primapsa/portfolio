@@ -1,10 +1,11 @@
 .wrapper {
   width: 1000px;
   margin: 0 auto;
+  height: 1500px;
 }
 
 .header {
-  height: 16rem;
+  height: 5rem;
   background-color: beige;
 }
 
@@ -15,7 +16,7 @@
 .about {
   position: relative;
   top: -5rem;
-  height: 17rem;
+  height: 12rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,6 +74,22 @@
   background: black;
 }
 
+.panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .panel__control {
   width: 18rem;
   height: 3.75rem;
@@ -94,11 +111,59 @@
 
 .panel__content {
   overflow: hidden;
+  max-height: 0;
+  max-height: 500px;
+  list-style: none;
+}
+
+.slider {
+  margin: 0;
+  position: relative;
+  max-width: 43rem;
+  height: 27rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.slide-control {
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: aqua;
+  cursor: pointer;
+}
+
+.item__desc {
+  width: 40%;
+  background: blue;
+}
+
+.item__image {
+  width: 60%;
+}
+
+.slider__next {
+  right: 0;
+}
+
+.slider__prev {
+  left: 0;
 }
 
 .show {
-  display: block;
-  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .hide {
