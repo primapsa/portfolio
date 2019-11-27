@@ -41,6 +41,7 @@ $ProximaNova: "Proxima Nova";
   margin: 0 auto;
   overflow: hidden;
   width: 1440px;
+  background-color: #ffffff;
 }
 /* --- HEADER ---*/
 .header {
@@ -2047,14 +2048,28 @@ $ProximaNova: "Proxima Nova";
     position: fixed;
     bottom: 100px;
     right: 50px;
+    height: 130px;
     flex-direction: column;
+    justify-content: space-between;
 }
 .button-control {
     display: block;
     width: 100px;
-    height: 60px;
-    background-color: white;
+    height: 50px;    
+    background-color: #000000;
+    color: #ffffff;
+    border-radius: 3px;   
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+   &:hover {
+    background-color: #1a1919;
+   }
 }
 .button-mobile {
   @include mobile-version;
+  background-color: #d6d5d5;
+}
+.hide {
+  display: none;
 }

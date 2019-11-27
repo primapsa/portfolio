@@ -4,7 +4,7 @@
     height: 1500px;
 }
 .header {
-    height: 5rem;
+    height: 8rem;
     background-color: beige;
 }
 .main {
@@ -88,11 +88,8 @@
 }
 .slider {
     margin: 0;
-    position: relative;
-    
-    max-width: 43rem;
-    height: 27rem;    
-    justify-content: center;
+    position: relative;  
+    height: 27rem;        
 }
 .item {
     
@@ -112,9 +109,17 @@
     width: 40%;
     background: blue;
 }
+.item__link {
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    width: 60%;    
+    overflow: hidden;
+    
+}
 .item__image { 
-     
-    width: 60%;     
+    width: auto;
+    height: auto;
 }
 .slider__next {
     right: 0;
