@@ -1,19 +1,25 @@
-.wrapper {
+
+ .main {
     width: 1000px;
     margin: 0 auto;
     height: 1500px;
 }
 .header {
-    height: 8rem;
-    background-color: beige;
+    height: 9rem;
+    background-image: url("assets/image/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .main {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .about {
     position: relative;
     top: -5rem; 
-    height: 12rem;
+    height: 18rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,10 +30,13 @@
     height: 10rem;
     border-radius: 50%;
     border: 2px solid #ffffff;
-    background-size: cover;
+    background-image: url("assets/image/usr.jpg");
+    background-position: center center;
     background-repeat: no-repeat;
-    background-position: center;
-    background-color: black;
+    background-size: cover;
+    transform: rotate(90deg);
+   
+  
 
 }
 
@@ -46,16 +55,17 @@
     align-items: center;
 }
 .social__link {
-    display: block;    
+   display: block;  
+   width: 2rem;
+   height: 2rem;  
 }
 
 .social__icon {
     display: block;   
     width: 2rem;
     height: 2rem;
-    background: black;
+  
 }
-
 .panel {   
     display: flex;
     flex-direction: column;
@@ -66,7 +76,9 @@
 .panel__control {
     width: 18rem;
     height: 3.75rem;
+    position: relative;
     padding: 0.5rem;
+    margin-bottom: 1rem;
     box-sizing: border-box;
     color: #ffffff;
     border: none;
@@ -80,16 +92,25 @@
     font-weight: 600;
 }
 
-.panel__content {   
+.panel__content {  
+    display: flex;
+    flex-direction: column; 
     overflow: hidden;
     max-height: 0;
     max-height: 500px; 
     list-style: none;
 }
+.panel__item {
+    padding: 1rem 0.5rem;
+    box-sizing: border-box;
+}
 .slider {
-    margin: 0;
+    width: 40rem;
+    height: 20rem;
+    display: flex;
+    justify-content: center;    
     position: relative;  
-    height: 27rem;        
+           
 }
 .item {
     
@@ -135,4 +156,14 @@
 .hide {
     display: none;
 }
-
+.panel__control:after {
+    content: "+"; 
+    position: absolute;
+    top: 32%;
+    right: 1rem;
+    font-size: 1.3rem;
+    color: white;
+   
+  }
+  
+ 
