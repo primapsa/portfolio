@@ -1,8 +1,12 @@
+$blackColor: #000000;
+$whiteColor: #ffffff;
+$colorSubBlue: #c4d2ff;
 
- .main {
-    width: 1000px;
-    margin: 0 auto;
-    height: 1500px;
+
+
+.main {
+    max-width: 65rem;    
+    margin: 0 auto;    
 }
 .header {
     height: 9rem;
@@ -29,23 +33,19 @@
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
-    border: 2px solid #ffffff;
+    border: 2px solid $whiteColor;
     background-image: url("assets/image/usr.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(90deg);
-   
-  
-
 }
 
 .about__title {
     font-size: 2rem;
     font-family: 'Roboto',Arial,sans-serif;
     font-weight: 600;
-    color: #000;
-
+    color: $blackColor;
 }
 
 .about__wrapper {
@@ -80,7 +80,7 @@
     padding: 0.5rem;
     margin-bottom: 1rem;
     box-sizing: border-box;
-    color: #ffffff;
+    color: $whiteColor;
     border: none;
     cursor: pointer;
     background-color: #0f3f7a;
@@ -95,11 +95,9 @@
 .panel__content {  
     display: flex;
     flex-direction: column; 
-    overflow: hidden;
-    max-height: 0;
-    max-height: 500px; 
-    list-style: none;
+    overflow: hidden;     
 }
+
 .panel__item {
     padding: 1rem 0.5rem;
     box-sizing: border-box;
@@ -109,11 +107,10 @@
     height: 20rem;
     display: flex;
     justify-content: center;    
-    position: relative;  
+    position: relative;      
            
 }
-.item {
-    
+.item {    
     display: flex;
     width: 100%;
     height: 100%;
@@ -121,20 +118,40 @@
 .slide-control {
     position: absolute;
     top: 50%;    
-    width: 15px;
-    height: 15px;
-    background-color: aqua;
+    width: 1rem;
+    height: 1rem;   
     cursor: pointer;
 }
 .item__desc {   
-    width: 40%;
-    background: blue;
+    width: 40%;  
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-around;
+    align-items: center; 
+    background-color: #f8f8f8;
+
 }
-.item__link {
-    display: flex;   
+.item__list {
+    height: 70%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: self-end;
+}
+.item__advice {
+    width: 90%;
+    height: 20%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 60%;    
+    background-color: $colorSubBlue;
+}
+.item__link {
+    width: 60%;   
+    display: flex;   
+    align-items: center;
+    justify-content: center;    
     overflow: hidden;
     
 }
@@ -143,10 +160,10 @@
     height: auto;
 }
 .slider__next {
-    right: 0;
+    right: -1.5rem;
 }
 .slider__prev {
-    left: 0;
+    left: -2.2rem;
 }
 
 .show {    
@@ -162,8 +179,64 @@
     top: 32%;
     right: 1rem;
     font-size: 1.3rem;
-    color: white;
-   
+    color: $whiteColor;   
   }
   
  
+  @media (min-width: 1200px) {
+    html {
+        font-size: 27px;
+    }
+ }
+ @media (min-width: 992px) and (max-width: 1199px) {
+     html {
+         font-size: 20px;
+     }
+  }
+ 
+ @media (min-width: 768px) and (max-width: 991px) {
+     html {
+         font-size: 17px;
+     }
+ }
+ 
+ @media (max-width: 767px) {
+     html {
+         font-size: 12px;
+     }
+     .slider {
+         width: 100%;
+         height: 100%;
+     }
+    .slide-control {
+        display: none;
+        &::before {
+            display: none;
+        }
+    }
+    .slider__item {
+        flex-direction: column;
+    }
+    .item__desc,
+    .item__link {
+        width: 100%;
+    }
+    .item__desc {
+        flex-direction: column-reverse;
+    }
+    .item__list {
+        display: none;
+    }
+ }
+ 
+ @media (max-width: 480px) {
+     html {
+         font-size: 10px;
+     }
+     .slide-control {
+        display: none;
+        &::before {
+            display: none;
+        }
+    }
+ }
