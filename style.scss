@@ -1,7 +1,7 @@
 $blackColor: #000000;
 $whiteColor: #ffffff;
 $colorSubBlue: #c4d2ff;
-
+$colorButtonBlue: #0f3f7a;
 
 
 .main {
@@ -83,7 +83,7 @@ $colorSubBlue: #c4d2ff;
     color: $whiteColor;
     border: none;
     cursor: pointer;
-    background-color: #0f3f7a;
+    background-color: $colorButtonBlue;
     border-radius: 3px;
     box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.75);
     text-align: left;
@@ -166,12 +166,11 @@ $colorSubBlue: #c4d2ff;
     left: -2.2rem;
 }
 
-.show {    
-    display: flex;    
-}
-
 .hide {
     display: none;
+}
+.show {    
+    display: flex;    
 }
 .panel__control:after {
     content: "+"; 
@@ -181,62 +180,12 @@ $colorSubBlue: #c4d2ff;
     font-size: 1.3rem;
     color: $whiteColor;   
   }
-  
- 
-  @media (min-width: 1200px) {
-    html {
-        font-size: 27px;
-    }
- }
- @media (min-width: 992px) and (max-width: 1199px) {
-     html {
-         font-size: 20px;
-     }
-  }
- 
- @media (min-width: 768px) and (max-width: 991px) {
-     html {
-         font-size: 17px;
-     }
- }
- 
- @media (max-width: 767px) {
-     html {
-         font-size: 12px;
-     }
-     .slider {
-         width: 100%;
-         height: 100%;
-     }
-    .slide-control {
-        display: none;
-        &::before {
-            display: none;
-        }
-    }
-    .slider__item {
-        flex-direction: column;
-    }
-    .item__desc,
-    .item__link {
-        width: 100%;
-    }
-    .item__desc {
-        flex-direction: column-reverse;
-    }
-    .item__list {
-        display: none;
-    }
- }
- 
- @media (max-width: 480px) {
-     html {
-         font-size: 10px;
-     }
-     .slide-control {
-        display: none;
-        &::before {
-            display: none;
-        }
-    }
- }
+.item__advice--button {
+    height: 3rem;
+    width: 10rem;
+    align-self: flex-end;
+    border-radius: 3px;  
+    font-size: 1.2rem;
+    background-color: $colorButtonBlue;
+    color: $whiteColor;  
+}  

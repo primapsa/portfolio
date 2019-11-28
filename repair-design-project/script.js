@@ -1,7 +1,7 @@
 const windowWith = document.documentElement.clientWidth;
 const resolution = document.querySelector('.resolution');
 const body = document.querySelector('body');
-console.log(windowWith);
+
 document.addEventListener("DOMContentLoaded", ()=>{
     if(windowWith < 375){
         resolution.classList.add('hide');

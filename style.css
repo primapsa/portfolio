@@ -246,14 +246,14 @@
   left: -2.2rem;
 }
 
+.hide {
+  display: none;
+}
+
 .show {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-.hide {
-  display: none;
 }
 
 .panel__control:after {
@@ -265,68 +265,14 @@
   color: #ffffff;
 }
 
-@media (min-width: 1200px) {
-  html {
-    font-size: 27px;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  html {
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  html {
-    font-size: 17px;
-  }
-}
-
-@media (max-width: 767px) {
-  html {
-    font-size: 12px;
-  }
-  .slider {
-    width: 100%;
-    height: 100%;
-  }
-  .slide-control {
-    display: none;
-  }
-  .slide-control::before {
-    display: none;
-  }
-  .slider__item {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .item__desc,
-  .item__link {
-    width: 100%;
-  }
-  .item__desc {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-  }
-  .item__list {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  html {
-    font-size: 10px;
-  }
-  .slide-control {
-    display: none;
-  }
-  .slide-control::before {
-    display: none;
-  }
+.item__advice--button {
+  height: 3rem;
+  width: 10rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  background-color: #0f3f7a;
+  color: #ffffff;
 }
 /*# sourceMappingURL=style.css.map */
