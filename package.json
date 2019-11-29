@@ -1,0 +1,29 @@
+{
+  "name": "pf",
+  "version": "1.0.0",
+  "description": "pf",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./**/*.js",
+    "fix": "eslint ./**/*.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primapsa/portfolio.git"
+  },
+  "author": "primapsa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/primapsa/portfolio/issues"
+  },
+  "homepage": "https://github.com/primapsa/portfolio#readme",
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  },
+  "keywords": [
+    "pf"
+  ]
+}
