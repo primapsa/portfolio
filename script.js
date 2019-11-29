@@ -1,4 +1,153 @@
 
+
+const mobileWidth = 767;
+const windowWith = document.documentElement.clientWidth;
+const button = document.querySelector('.panel__control');
+const panel = document.querySelector('.panel__content');
+const buttonControl= document.querySelectorAll('.item-control');
+let items = document.querySelectorAll('.carousel .item');
+
+let currentItem = 0;
+let isEnabled = true;
+
+
+
+function changeCurrentItem(n) {
+	currentItem = (n + items.length) % items.length;
+}
+
+function hideItem(direction) {
+	isEnabled = false;
+	items[currentItem].classList.add(direction);
+	items[currentItem].addEventListener('animationend', function() {
+		this.classList.remove('active', direction);
+	});
+}
+
+function showItem(direction) {
+	items[currentItem].classList.add('next', direction);
+	items[currentItem].addEventListener('animationend', function() {
+		this.classList.remove('next', direction);
+		this.classList.add('active');
+		isEnabled = true;
+	});
+}
+
+function nextItem(n) {
+	hideItem('to-left');
+	changeCurrentItem(n + 1);
+	showItem('from-right');
+}
+
+function previousItem(n) {
+	hideItem('to-right');
+	changeCurrentItem(n - 1);
+	showItem('from-left');
+}
+
+document.querySelector('.control.left').addEventListener('click', function() {
+	if (isEnabled) {
+		previousItem(currentItem);
+	}
+});
+
+document.querySelector('.control.right').addEventListener('click', function() {
+	if (isEnabled) {
+		nextItem(currentItem);
+	}
+});
+
+const swipedetect = (el) => {
+  
+	let surface = el;
+	let startX = 0;
+	let startY = 0;
+	let distX = 0;
+	let distY = 0;
+	let startTime = 0;
+	let elapsedTime = 0;
+
+	let threshold = 150;
+	let restraint = 100;
+	let allowedTime = 300;
+
+	// surface.addEventListener('mousedown', function(e){
+	// 	startX = e.pageX;
+	// 	startY = e.pageY;
+	// 	startTime = new Date().getTime();
+	// 	e.preventDefault();
+	// }, false);
+
+	// surface.addEventListener('mouseup', function(e){
+	// 	distX = e.pageX - startX;
+	// 	distY = e.pageY - startY;
+	// 	elapsedTime = new Date().getTime() - startTime;
+	// 	if (elapsedTime <= allowedTime){
+	// 		if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
+	// 			if ((distX > 0)) {
+	// 				if (isEnabled) {
+	// 					previousItem(currentItem);
+	// 				}
+	// 			} else {
+	// 				if (isEnabled) {
+	// 					nextItem(currentItem);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	e.preventDefault();
+	// }, false);
+
+	surface.addEventListener('touchstart', function(e){
+		if (e.target.classList.contains('arrow') || e.target.classList.contains('control')) {
+			if (e.target.classList.contains('left')) {
+				if (isEnabled) {
+					previousItem(currentItem);
+				}
+			} else {
+				if (isEnabled) {
+					nextItem(currentItem);
+				}
+			}
+		}
+			var touchobj = e.changedTouches[0];
+			startX = touchobj.pageX;
+			startY = touchobj.pageY;
+			startTime = new Date().getTime();
+			//e.preventDefault();
+	}, false);
+
+	surface.addEventListener('touchmove', function(e){
+			e.preventDefault();
+	}, false);
+
+	surface.addEventListener('touchend', function(e){
+			var touchobj = e.changedTouches[0];
+			distX = touchobj.pageX - startX;
+			distY = touchobj.pageY - startY;
+			elapsedTime = new Date().getTime() - startTime;
+			if (elapsedTime <= allowedTime){
+					if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint){
+							if ((distX > 0)) {
+								if (isEnabled) {
+									previousItem(currentItem);
+								}
+							} else {
+								if (isEnabled) {
+									nextItem(currentItem);
+								}
+							}
+					}
+			}
+			//e.preventDefault();
+	}, false);
+}
+
+var el = document.querySelector('.carousel');
+
+swipedetect(el);
+
+/*
 let slideIndex = 1;
 console.log(slideIndex);
 showSlides(slideIndex);
@@ -41,7 +190,7 @@ const slider = document.querySelector('.slider');
 const advice = document.querySelectorAll('.item__advice');
 const itemList = document.querySelectorAll('.item__list');
 const itemLink = document.querySelectorAll('.item__link');
-const sliderTarget = 'item__image';
+const sliderTarget = 'item__link';
 let touches = [];
 let isTouchStart = false;
 let isTouchMove = false;
@@ -78,21 +227,9 @@ function compareTouches(){
        
     }
 }
-// function touchStart(event){
-//     const touchX = Math.floor(event.targetTouches[0].clientX);
-//     touches.push(touchX); 
-//     isTouchStart = true;   
-// }
-// function touchMove(event){
-//     const touchX = Math.floor(event.targetTouches[0].clientX);
-//     touches.push(touchX); 
-//     isTouchMove = true;
-// }
-// function touchEnd(event){
-//     isTouchEnd = true;
-//     compareTouches();
-// }
+
 function touchStart(event){
+    console.log(event);
     if(checkTarget(event.target)){
         const touchX = Math.floor(event.targetTouches[0].clientX);
         touches.push([touchX]); 
@@ -112,21 +249,13 @@ function touchEnd(event){
     const offsetY = event.target.offsetHeight;
     const offsetX = event.target.offsetWidth;
     const lastElement = touches[touches.length - 1];
-    
-    // console.log(lastElement[0]);
-    if((lastElement[0] > 0 && lastElement[1] >0)
-     && (lastElement[0] < offsetX && lastElement[1] < offsetY) )
-     {
-         console.log(`current X${lastElement[0]} Y${lastElement[0]}  size X${offsetX} Y${offsetY}`);
+    console.log(`current X${lastElement[0]} Y${lastElement[1]}  size X${offsetX} Y${offsetY}`);
+    if(lastElement[0] > 0 && lastElement[0] < offsetX) {
+         
          isTouchEnd = true;
         compareTouches();
      }
-    // const targetSize = document.querySelectorAll(sliderTarget);
-    // const targetY = targetSize[slideIndex-1].offsetWidth;
-    // const targetX = targetSize[slideIndex-1].offsetHeight;
-    
-        // isTouchEnd = true;
-        // compareTouches();
+ 
         
 }
 
@@ -134,32 +263,26 @@ slider.addEventListener('touchstart', touchStart);
 slider.addEventListener('touchmove', touchMove);
 slider.addEventListener('touchend', touchEnd);
 
-// itemLink[slideIndex-1].addEventListener('touchstart', touchStart);
-// itemLink[slideIndex-1].addEventListener('touchmove', touchMove);
-// itemLink[slideIndex-1].addEventListener('touchend', touchEnd);
-// itemLink[slideIndex].addEventListener('touchstart', touchStart);
-// itemLink[slideIndex].addEventListener('touchmove', touchMove);
-// itemLink[slideIndex].addEventListener('touchend', touchEnd);
-document.addEventListener("DOMContentLoaded", ()=>{
-    if(windowWith < mobileWidth){        
-       
-            advice[slideIndex-1].classList.add('item__advice--button');
-            advice[slideIndex-1].innerHTML = 'Show description';
+*/
+function showHide(){
+     
+}
+for(let ij = 0; ij < buttonControl.length; ij++){
+    buttonControl[ij].addEventListener('click', ()=>{
+        const itemList = document.querySelector('.item.active .item-list');   
         
-    }
-});
-advice[slideIndex-1].addEventListener('click',()=>{   
-    
-        if(itemList[slideIndex-1].classList[1] === 'show'){
-            itemList[slideIndex-1].classList.remove('show');
-            advice[slideIndex-1].innerHTML = 'Show description';
-        }
-        else{
-            itemList[slideIndex-1].classList.add('show');
-            advice[slideIndex-1].innerHTML = 'Close description';
-        }        
-    
-});
+        if(itemList.classList[1] === 'show'){
+               itemList.classList.remove('show');
+               buttonControl[ij].innerHTML = 'Show description';
+           }
+           else{
+               itemList.classList.add('show');
+               buttonControl[ij].innerHTML = 'Close description';
+           } 
+    });
+}
+
+
 button.addEventListener('click',()=>{
     
     if(panel.classList[1] === 'show'){   

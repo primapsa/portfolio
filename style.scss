@@ -95,8 +95,9 @@ $colorButtonBlue: #0f3f7a;
 .panel__content {  
     display: flex;
     flex-direction: column; 
-    overflow: hidden;     
-}
+    overflow: hidden;  
+   
+}   
 
 .panel__item {
     padding: 1rem 0.5rem;
@@ -131,9 +132,11 @@ $colorButtonBlue: #0f3f7a;
     background-color: #f8f8f8;
 
 }
-.item__list {
-    height: 70%;
+.item-list {
+   padding-right: 1rem;
+   box-sizing: border-box;
     margin: 0;
+    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -170,7 +173,7 @@ $colorButtonBlue: #0f3f7a;
     display: none;
 }
 .show {    
-    display: flex;    
+    display: flex;     
 }
 .panel__control:after {
     content: "+"; 
@@ -180,7 +183,7 @@ $colorButtonBlue: #0f3f7a;
     font-size: 1.3rem;
     color: $whiteColor;   
   }
-.item__advice--button {
+.advice--button {
     height: 3rem;
     width: 10rem;
     align-self: flex-end;
@@ -189,3 +192,133 @@ $colorButtonBlue: #0f3f7a;
     background-color: $colorButtonBlue;
     color: $whiteColor;  
 }  
+.carousel {  
+    position: relative;
+    width: 100%;
+      
+  }
+  
+  .items-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .item {
+    display: none;
+    position: relative;
+    animation: 0.5s ease-in-out;
+    margin: 0 auto;
+  }
+  
+  .active,
+  .next {
+    display: block;
+  }
+  
+  .next {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+  
+  .description {  
+    display: flex;   
+    justify-content: center;
+  }
+  .item-control {
+      display: none;
+      height: 2.5rem;
+      color: $whiteColor;
+      border: none;
+      border-radius: 2px;
+      background-color: $colorButtonBlue;
+      box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.75)
+  }
+  .project-name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: $colorSubBlue;
+  }
+  
+  .control {
+    position: absolute;
+    top: 0;
+    bottom: 0;    
+    cursor: pointer;
+    
+  }
+  
+  .control.left {
+    left: 0;
+    right: auto;
+  }
+  
+  .control.right {
+    right: 0;
+    left: auto;
+  }
+  
+  .arrow {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 84px;
+  }
+  
+  .arrow.right {
+    right: 50%;
+  }
+  
+  .to-left {
+    animation-name: left;
+  }
+  
+  .from-right {
+    animation-name: right;
+  }
+  
+  .to-right {
+    animation-name: right;
+    animation-direction: reverse;
+  }
+  
+  .from-left {
+    animation-name: left;
+    animation-direction: reverse;
+  }
+  @keyframes panelshow {
+    from {
+    height: 0;
+    display: none;
+    background-color: red;
+    }
+    to {
+        display: flex;
+      height: 250px;
+      background-color: blue;
+    }
+  }
+  @keyframes left {
+    from {
+      left: 0;
+    }
+    to {
+      left: -100%;
+    }
+  }
+  
+  @keyframes right {
+    from {
+      left: 100%;
+    }
+    to {
+      left: 0;
+    }
+  }
+
+  

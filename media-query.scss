@@ -18,34 +18,30 @@
  @media (max-width: 767px) {
      html {
          font-size: 12px;
-     }
-     .slider {
-         width: 100%;
-         height: 100%;
-     }
-    .slide-control {
-        display: none;
-        &::before {
-            display: none;
-        }
+     }   
+    .control {
+        display: none;        
     }
-    .slider__item {
+    .description {
         flex-direction: column;
-    }
-    .item__desc,
-    .item__link {
-        width: 100%;
-    }
-    .item__desc {
+    }   
+    .project-name {
         flex-direction: column-reverse;
         background-color: transparent;
         margin-bottom: 0.5rem;
     }
-    .item__list {
+    .item-list {
         display: none;
     }
     .show {
         display: flex;
+    }
+    .advice {
+       display: none;
+    }
+    .item-control {
+        display: block;       
+        align-self: flex-end;        
     }
  }
  
@@ -53,10 +49,8 @@
      html {
          font-size: 10px;
      }
-     .slide-control {
-        display: none;
-        &::before {
-            display: none;
-        }
-    }
+     .control {
+         display: none;
+     }
  }
+ 
